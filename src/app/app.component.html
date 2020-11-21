@@ -40,3 +40,16 @@
 <button color="accent" mat-raised-button>Accent</button>
 <button color="warn" mat-raised-button>Warn</button>
 <button color="primary" mat-fab><mat-icon>check</mat-icon></button>
+
+<mat-chip-list multiple="true" selectable="true">
+  <mat-chip
+    *ngFor="let category of categories"
+    (selectionChange)="changeSelected($event)"
+    (click)="selectCategory(category)"
+    [selected]="category.selected"
+  >
+    {{ category.name }}
+  </mat-chip>
+</mat-chip-list>
+<mat-spinner mode="determinate" [value]="progress"></mat-spinner>
+<mat-spinner></mat-spinner>
