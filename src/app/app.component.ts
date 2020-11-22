@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { EditCourseComponent } from './edit-course/edit-course.component';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +21,12 @@ export class AppComponent {
   progress = 0;
   timer;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.timer = setInterval(() => {
       this.progress++;
-      if (this.progress == 100) clearInterval(this.timer);
+      if (this.progress === 100) {
+        clearInterval(this.timer);
+      }
     }, 20);
   }
 
@@ -30,7 +34,7 @@ export class AppComponent {
     console.log($event);
   }
 
-  selectCategory(category) {
+  selectCategory(category): void {
     this.categories
       .filter((c) => c != category)
       .forEach((c) => (c['selected'] = false));
@@ -42,5 +46,14 @@ export class AppComponent {
     return this.username.hasError('required')
       ? 'The username field is required.'
       : '';
+  }
+
+  openDialog(): void {
+    this.dialog
+      .open(EditCourseComponent, {
+        data: { courseId: 1 },
+      })
+      .afterClosed()
+      .subscribe((result) => console.log(result));
   }
 }

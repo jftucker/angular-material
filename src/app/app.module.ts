@@ -11,15 +11,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditCourseComponent } from './edit-course/edit-course.component';
+import { CourseService } from './course.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EditCourseComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -35,6 +40,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatChipsModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
+    MatTabsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
