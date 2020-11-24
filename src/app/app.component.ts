@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
 import { EditCourseComponent } from './edit-course/edit-course.component';
 
 @Component({
@@ -36,7 +35,8 @@ export class AppComponent {
 
   selectCategory(category): void {
     this.categories
-      .filter((c) => c != category)
+      .filter((c) => c !== category)
+      // tslint:disable-next-line: no-string-literal
       .forEach((c) => (c['selected'] = false));
 
     category.selected = !category.selected;
